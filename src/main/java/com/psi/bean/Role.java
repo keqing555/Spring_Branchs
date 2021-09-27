@@ -1,5 +1,7 @@
 package com.psi.bean;
 
+import org.springframework.lang.NonNull;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -144,7 +146,7 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "\n Role{" +
                 "rid=" + rid +
                 ", rname='" + rname + '\'' +
                 ", area='" + area + '\'' +
@@ -152,11 +154,11 @@ public class Role {
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
                 ", elementalForce='" + elementalForce + '\'' +
-                ", weapon=" + weapon +
+                ",\n weapon=" + weapon +
                 ", arr=" + Arrays.toString(arr) +
                 ", list=" + list +
                 ", set=" + set +
                 ", map=" + map +
-                '}';
+                '}'+"\n";
     }
 }

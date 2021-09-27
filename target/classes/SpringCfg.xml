@@ -37,21 +37,25 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <!--继承spring的工厂类创建实例，常用-->
     <bean id="roleDao3" class="com.psi.util.MyFactory"></bean>
 
-    <!--    DI:dependency injection依赖注入，为spring容器创建的对象，注入依赖的初始属性值，
-            注入的方式两种：构造注入和setter注入；
+    <!--
+    DI:dependency injection 依赖注入，为spring容器创建的对象，注入依赖的初始属性值，
+    注入的方式两种：构造注入和setter注入；
             -->
     <!--
-    setter注入
+    setter方法注入
     -->
     <bean id="weapon1" class="com.psi.bean.Weapon">
         <property name="wname" value="匣里龙吟"></property>
+        <property name="star" value="★★★★"></property>
     </bean>
     <bean id="weapon2" class="com.psi.bean.Weapon">
         <property name="wname" value="渔获"></property>
+        <property name="star" value="★★★★"></property>
     </bean>
 
     <bean id="role1" class="com.psi.bean.Role">
         <property name="rname" value="刻晴"></property>
+        <property name="star" value="★★★★★"></property>
         <!--引用数据类型-->
         <property name="weapon" ref="weapon1"></property>
         <property name="arr">
@@ -118,8 +122,8 @@ https://www.springframework.org/schema/context/spring-context.xsd">
 
 <!--    XML文件模块化，不同文件里可以有相同的id，
         后加载的文件会覆盖前面相同id的对象
-        1，加载xml文件有几个写几个
-        2，在第一个配置文件中导入后续配置文件：
+        1，加载xml文件可以有几个写几个
+        2，也可以在第一个配置文件中导入后续配置文件：
         <import resource="springCfg.xml"></import>
 -->
 </beans>

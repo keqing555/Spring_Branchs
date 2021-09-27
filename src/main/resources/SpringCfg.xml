@@ -46,13 +46,16 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     -->
     <bean id="weapon1" class="com.psi.bean.Weapon">
         <property name="wname" value="匣里龙吟"></property>
+        <property name="star" value="★★★★"></property>
     </bean>
     <bean id="weapon2" class="com.psi.bean.Weapon">
         <property name="wname" value="渔获"></property>
+        <property name="star" value="★★★★"></property>
     </bean>
 
     <bean id="role1" class="com.psi.bean.Role">
         <property name="rname" value="刻晴"></property>
+        <property name="star" value="★★★★★"></property>
         <!--引用数据类型-->
         <property name="weapon" ref="weapon1"></property>
         <property name="arr">

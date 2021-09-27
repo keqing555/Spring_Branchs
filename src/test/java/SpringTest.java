@@ -65,6 +65,6 @@ public class SpringTest {
     public void sgls(){
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("SpringCfg.xml");
         Role role=(Role)applicationContext.getBean("role2");
-        System.out.println(role);
+      System.out.println(role);
     }
 }
