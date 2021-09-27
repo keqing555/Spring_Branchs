@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context 
+https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--
+    bean标签中常用的属性：
+
+    id:用于给容器中的实例取别名，作唯一标识；在同一个xml文件中id不能重复，
+        但是在多个xml文件中是可以重复的，后加载的xml文件会覆盖前面的xml文件中id相同的对象实例；
+    name:和id属性一样，用于给对象实例取别名；
+    class:用于指定要创建的实例类型或者是创建实例的工厂类（静态工厂类或者指定工厂类）
+    factory-bean:用于指定创建对象的工厂实例；
+    factory-method:用于指定创建对象的工厂方法；
+    init-method:用于指定创建完对象后调用的初始化方法；
+    destory-method:用于指定对象销毁时调用的方法（tomcat服务器正常关闭时，销毁对象后调用的方法）；
+    scope:取值有以下几个：
+        singleton:以单例模式创建的全局对象实例，在解析xml文件时创建的；
+        prototype：以多例模式创建的局部对象实例，在每一次获取实例时创建；
+        //单例模式下，会获取到一模一样的对象，多例模式下不一样
+        request：创建完实例会绑定到一次请求中；
+        session：创建完实例会绑定到一次会话中；
+        globleSession：创建完实例会绑定到全局会话中；
+        -->
+
+    <!--使用无参构造方法创建实例-->
+    <bean id="roleDao" class="com.psi.dao.impl.RoleDaoImpl" init-method="init" scope="singleton"></bean>
+    <!--普通工厂方法创建实例,非静态方法-->
+    <bean id="roleDaoFactory" class="com.psi.util.RoleDaoFactory"></bean>
+    <bean id="roleDao1" factory-bean="roleDaoFactory" factory-method="getRoleDao1"></bean>
+    <!--静态工厂方法创建实例,静态方法-->
+    <bean id="roleDao2" class="com.psi.util.RoleDaoFactory" factory-method="getRoleDao2"></bean>
+
+    <!--继承spring的工厂类创建实例，常用-->
+    <bean id="roleDao3" class="com.psi.util.MyFactory"></bean>
+
+    <!--    DI:dependency injection依赖注入，为spring容器创建的对象，注入依赖的初始属性值，
+            注入的方式两种：构造注入和setter注入；
+            -->
+    <!--
+    setter注入
+    -->
+    <bean id="weapon1" class="com.psi.bean.Weapon">
+        <property name="wname" value="匣里龙吟"></property>
+    </bean>
+    <bean id="weapon2" class="com.psi.bean.Weapon">
+        <property name="wname" value="渔获"></property>
+    </bean>
+
+    <bean id="role1" class="com.psi.bean.Role">
+        <property name="rname" value="刻晴"></property>
+        <!--引用数据类型-->
+        <property name="weapon" ref="weapon1"></property>
+        <property name="arr">
+            <array>
+                <value>蒙德</value>
+                <value>璃月</value>
+                <value>稻妻</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <ref bean="weapon1"></ref>
+                <ref bean="weapon2"></ref>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <ref bean="weapon1"></ref>
+                <ref bean="weapon2"></ref>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value-ref="weapon1"></entry>
+                <entry key="2" value-ref="weapon2"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <!--
+        构造注入
+        字段要符合构造方法
+        -->
+    <bean id="role2" class="com.psi.bean.Role">
+        <constructor-arg name="rname" value="刻晴"></constructor-arg>
+        <!--引用数据类型-->
+        <constructor-arg name="weapon" ref="weapon1"></constructor-arg>
+        <constructor-arg name="arr">
+            <array>
+                <value>蒙德</value>
+                <value>璃月</value>
+                <value>稻妻</value>
+            </array>
+        </constructor-arg>
+        <constructor-arg name="list">
+            <list>
+                <ref bean="weapon1"></ref>
+                <ref bean="weapon2"></ref>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="set">
+            <set>
+                <ref bean="weapon1"></ref>
+                <ref bean="weapon2"></ref>
+            </set>
+        </constructor-arg>
+        <constructor-arg name="map">
+            <map>
+                <entry key="1" value-ref="weapon1"></entry>
+                <entry key="2" value-ref="weapon2"></entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+<!--    XML文件模块化，不同文件里可以有相同的id，
+        后加载的文件会覆盖前面相同id的对象
+        1，加载xml文件有几个写几个
+        2，在第一个配置文件中导入后续配置文件：
+        <import resource="springCfg.xml"></import>
+-->
+</beans>
