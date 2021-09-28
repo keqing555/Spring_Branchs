@@ -31,7 +31,7 @@ public class WeaponServiceImpl_poxy implements WeaponService {
                     //更换武器
                     weaponDao.update(rid, wid);
                     //修改一半，模拟故障
-                    //int error=1/0;
+                    int error=1/0;
                     weaponDao.update(target_rid, current_wid);
                     System.out.println("切换武器成功");
                 } else {

@@ -29,6 +29,7 @@ public class PoxyWeaponServiceImpl implements WeaponService {
         } catch (Exception e) {
             e.printStackTrace();
             //回滚事务
+            System.out.println("回滚事务");
             MyTransactionManager.rollbackTransaction(MyJdbcFactory.getConnection());
         } finally {
             //关闭连接

@@ -13,16 +13,24 @@ public class change {
     @Qualifier("weaponServiceImpl")     //搭配Autowired使用，通过指定实例的别名来注入实例
     private WeaponService weaponService;
 
+    @Autowired
+    @Qualifier("weaponServiceImpl_poxy")
+    private WeaponService poxyWeaponService;
+
     /**
      * 在业务中添加事务
      */
     @Test
     public void sfds() {
-        weaponService.changeWeapon(2, 3);
+        weaponService.changeWeapon(1, 2);
     }
+
     /**
      * 在不改变源代码的情况下添加事务
      * 新增静态代理类
      */
-
+    @Test
+    public void sfdd() {
+    poxyWeaponService.changeWeapon(1,2);
+    }
 }
