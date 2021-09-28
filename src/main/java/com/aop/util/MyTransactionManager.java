@@ -10,6 +10,7 @@ public class MyTransactionManager {
     //开启事务
     public static void beginTransaction(Connection connection) {
         try {
+            //关闭自动提交
             connection.setAutoCommit(false);
         } catch (SQLException e) {
             e.printStackTrace();
