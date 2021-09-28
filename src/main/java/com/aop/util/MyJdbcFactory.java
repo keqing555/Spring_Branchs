@@ -10,6 +10,8 @@ public class MyJdbcFactory {
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
+    //private Connection connection;
+
     //把连接绑定到线程里
     private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
 
@@ -39,7 +41,7 @@ public class MyJdbcFactory {
         return connection;
     }
 
-    public  static void closeConnection(Connection connection) {
+    public static void closeConnection(Connection connection) {
         try {
             connection.close();
         } catch (SQLException e) {

@@ -20,6 +20,9 @@ public class MyTransactionManager {
     //提交事务
     public static void commitTransaction(Connection connection) {
         try {
+            //报错：Can't call commit when autocommit=true
+            //这里先把自动提交再次关闭，再手动提交
+            connection.setAutoCommit(false);
             connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();

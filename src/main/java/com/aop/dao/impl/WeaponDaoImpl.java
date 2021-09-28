@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Repository
+@Repository     //创建dao层实例，放入到容器里
 public class WeaponDaoImpl implements WeaponDao {
     @Override
     public void update(int rid,int wid) {
@@ -72,5 +72,37 @@ public class WeaponDaoImpl implements WeaponDao {
             e.printStackTrace();
         }
         return weapon;
+    }
+
+    @Override
+    public int getMaxWid() {
+        Connection connection=MyJdbcFactory.getConnection();
+        String sql="select count(wid) from weapon";
+        int max=0;
+        try {
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet resultSet = pstmt.executeQuery(sql);
+            while(resultSet.next()){
+                max = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return max;
+    }
+
+    @Override
+    public boolean weaponExists(int wid) {
+        boolean exist=false;
+        Connection connection=MyJdbcFactory.getConnection();
+        String sql="select * from weapon where wid=?";
+        try {
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setInt(1,wid);
+            exist = pstmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exist;
     }
 }

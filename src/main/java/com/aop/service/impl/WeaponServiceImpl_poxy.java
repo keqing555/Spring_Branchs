@@ -10,21 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 在业务中添加事务
+ * 在不改变源代码的情况下新增事务
  */
 @Service    //创建该类实例，放到容器里
-public class WeaponServiceImpl implements WeaponService {
+public class WeaponServiceImpl_poxy implements WeaponService {
     @Autowired  //给成员变量赋初始值（从容器中拿）
     private WeaponDao weaponDao;
 
-    /**
-     * 实现切换业务
-     */
     @Override
     public void changeWeapon(int rid, int wid) {
-        //开启事务
-        MyTransactionManager.beginTransaction(MyJdbcFactory.getConnection());
-        try {
             Weapon weapon = weaponDao.getWeaponByWid(wid);
             //目标武器是否存在，存在
             if (weapon.getWname() != null) {
@@ -46,15 +40,5 @@ public class WeaponServiceImpl implements WeaponService {
             } else {
                 System.out.println("该武器不存在");
             }
-            //提交事务
-            MyTransactionManager.commitTransaction(MyJdbcFactory.getConnection());
-        } catch (Exception e) {
-            e.printStackTrace();
-            //回滚事务
-            MyTransactionManager.rollbackTransaction(MyJdbcFactory.getConnection());
-        } finally {
-            //关闭连接
-            MyJdbcFactory.closeConnection(MyJdbcFactory.getConnection());
-        }
     }
 }
