@@ -15,7 +15,7 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="com.aop"/>
 
     <!--创建通知实例-->
-    <bean id="myAdviser" class="com.aop.advice.MyAdviser"></bean>
+    <bean id="myAdviser" class="com.aop.advice.WeaponAdviser"></bean>
     <!--面向切面编程-->
     <aop:config>
         <!--定义切点-->

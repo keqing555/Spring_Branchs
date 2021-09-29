@@ -7,14 +7,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring_aop.xml")
-public class Spring_AOP_Test {
+@ContextConfiguration(locations = "classpath:spring_aop_annotation.xml")
+public class Spring_AOP_Annotation {
     @Autowired
-    @Qualifier("weaponServiceImpl_proxy")
+     @Qualifier("weaponServiceImpl_proxy")
     private WeaponService weaponService;
 
     @Test
-    public void aop() {
-        weaponService.changeWeapon(1, 2);
+    public void aop_annotation() {
+        weaponService.changeWeapon(1, 1);
     }
 }

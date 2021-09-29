@@ -49,6 +49,7 @@ public class MyJdbcFactory {
     public static void closeConnection(Connection connection) {
         try {
             connection.close();
+            System.out.println("######关闭数据库连接######");
         } catch (SQLException e) {
             e.printStackTrace();
         }

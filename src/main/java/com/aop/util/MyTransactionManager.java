@@ -12,6 +12,7 @@ public class MyTransactionManager {
         try {
             //关闭自动提交
             connection.setAutoCommit(false);
+            System.out.println("######开启事务######");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -21,6 +22,7 @@ public class MyTransactionManager {
     public static void commitTransaction(Connection connection) {
         try {
             connection.commit();
+            System.out.println("######提交事务######");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -30,6 +32,7 @@ public class MyTransactionManager {
     public static void rollbackTransaction(Connection connection) {
         try {
             connection.rollback();
+            System.out.println("######回滚事务######");
         } catch (SQLException e) {
             e.printStackTrace();
         }
