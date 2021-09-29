@@ -5,8 +5,8 @@ import com.aop.dao.WeaponDao;
 import com.aop.service.WeaponService;
 import com.aop.util.MyJdbcFactory;
 import com.aop.util.MyTransactionManager;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**

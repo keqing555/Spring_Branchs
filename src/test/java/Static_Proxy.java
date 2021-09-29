@@ -6,19 +6,22 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * 在不改变源代码的情况下添加事务
+ * 新增静态代理类
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring_change.xml")
-public class change {
-    @Autowired  //给成员变量设置初始值
-    @Qualifier("weaponServiceImpl")     //搭配Autowired使用，通过指定实例的别名来注入实例
-    private WeaponService weaponService;
+@ContextConfiguration(locations="classpath:spring_change.xml")
+public class Static_Proxy {
+    @Autowired
+    @Qualifier("weaponServiceImpl_proxy")
+    private WeaponService proxyWeaponService;
 
     /**
-     * 在业务中添加事务
+     * 还不能实现回滚
      */
     @Test
-    public void sfds() {
-        weaponService.changeWeapon(1, 1);
+    public void sfdd() {
+        proxyWeaponService.changeWeapon(1, 1);
     }
-
 }

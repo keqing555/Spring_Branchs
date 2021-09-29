@@ -21,7 +21,8 @@ public class WeaponDaoImpl implements WeaponDao {
             pstmt.setInt(1,rid);
             pstmt.setInt(2, wid);
             pstmt.executeUpdate();
-            MyJdbcFactory.closeConnection(connection);
+            //用事务关闭连接
+            //MyJdbcFactory.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,7 +45,7 @@ public class WeaponDaoImpl implements WeaponDao {
                 weapon.setWid(rs.getInt("wid"));
             }
             rs.close();
-            MyJdbcFactory.closeConnection(connection);
+           // MyJdbcFactory.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,7 +68,7 @@ public class WeaponDaoImpl implements WeaponDao {
                 weapon.setWid(rs.getInt("wid"));
             }
             rs.close();
-            MyJdbcFactory.closeConnection(connection);
+          //  MyJdbcFactory.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }

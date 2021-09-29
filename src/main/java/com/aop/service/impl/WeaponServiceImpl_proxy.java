@@ -7,13 +7,14 @@ import com.aop.util.MyJdbcFactory;
 import com.aop.util.MyTransactionManager;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
  * 在不改变源代码的情况下新增事务
  */
 @Service    //创建该类实例，放到容器里
-public class WeaponServiceImpl_poxy implements WeaponService {
+public class WeaponServiceImpl_proxy implements WeaponService {
     @Autowired  //给成员变量赋初始值（从容器中拿）
     private WeaponDao weaponDao;
 

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * 单例设计模式获取连接
+ */
 public class MyJdbcFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/genshin?characterEncoding=UTF-8";
@@ -35,6 +38,8 @@ public class MyJdbcFactory {
         }
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            //把连接绑定到线程
+            threadLocal.set(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
