@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 https://www.springframework.org/schema/beans/spring-beans.xsd
-http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/aop
+https://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/context
 https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--添加aop协议-->
 
+    <!--扫描注解-->
+    <context:component-scan base-package="com.aop"/>
 
+    <!--创建通知实例-->
+    <bean id="myAdviser" class="com.aop.advice.MyAdviser"></bean>
+    <!--面向切面编程-->
+    <aop:config>
+        <!--定义切点-->
+        <!--excution表达式用来定位切点的，提供了两个通配符：
+        *：代表任意返回数据类型，任意包，任意类，任意方法
+        ..:代表任意参数-->
+        <!--这个标签还不能换行-->
+        <aop:pointcut id="pt"
+                      expression="execution(void com.aop.service.impl.WeaponServiceImpl_proxy.changeWeapon(..))"/>
+        <!--构建切面-->
+        <aop:aspect ref="myAdviser">
+            <!--在切点下订单前加通知额外的通过beforeAdvice-->
+            <!--这个标签还不能换行-->
+            <aop:before method="beforeAdvice" pointcut-ref="pt"></aop:before>
+            <aop:after method="afterAdvice" pointcut-ref="pt"/>
+            <aop:around method="aroundAdvice" pointcut-ref="pt"/>
+            <aop:after-returning method="returnAdvice" pointcut-ref="pt"/>
+            <aop:after-throwing method="afterException" pointcut-ref="pt"></aop:after-throwing>
+        </aop:aspect>
+    </aop:config>
 </beans>
