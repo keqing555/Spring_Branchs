@@ -15,18 +15,18 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="com.aop"/>
 
     <!--创建通知实例-->
-    <bean id="myAdviser" class="com.aop.advice.WeaponAdviser"></bean>
+    <bean id="weaponAdviser" class="com.aop.advice.WeaponAdviser"></bean>
     <!--面向切面编程-->
     <aop:config>
         <!--定义切点-->
-        <!--excution表达式用来定位切点的，提供了两个通配符：
+        <!--execution表达式用来定位切点的，提供了两个通配符：
         *：代表任意返回数据类型，任意包，任意类，任意方法
         ..:代表任意参数-->
         <!--这个标签还不能换行-->
         <aop:pointcut id="pt"
                       expression="execution(void com.aop.service.impl.WeaponServiceImpl_proxy.changeWeapon(..))"/>
         <!--构建切面-->
-        <aop:aspect ref="myAdviser">
+        <aop:aspect ref="weaponAdviser">
             <!--在切点下订单前加通知额外的通过beforeAdvice-->
             <!--这个标签还不能换行-->
             <aop:before method="beforeAdvice" pointcut-ref="pt"></aop:before>

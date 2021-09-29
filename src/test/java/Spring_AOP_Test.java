@@ -15,6 +15,6 @@ public class Spring_AOP_Test {
 
     @Test
     public void aop() {
-        weaponService.changeWeapon(1, 2);
+        weaponService.changeWeapon(1, 1);
     }
 }
