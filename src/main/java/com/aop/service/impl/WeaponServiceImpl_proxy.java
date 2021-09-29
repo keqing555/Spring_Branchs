@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service    //创建该类实例，放到容器里
 public class WeaponServiceImpl_proxy implements WeaponService {
     @Autowired  //给成员变量赋初始值（从容器中拿）
+    @Qualifier("weaponDaoImpl")
     private WeaponDao weaponDao;
 
     @Override
