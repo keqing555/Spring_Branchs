@@ -2,36 +2,34 @@ package com.aop.service.impl;
 
 import com.aop.util.MyJdbcFactory;
 import com.aop.util.MyTransactionManager;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * 在不改变源代码的情况下给任意功能加事务
- * 定义任意代理类
- * 实现JDK自带接口
- * jdk动态代理缺点：只能给实现接口的类中的任意方法加额外功能
+ * cglib动态代理，给任意类加任意额外功能
  */
-public class JdkProxy implements InvocationHandler {
+public class CglibProxy implements MethodInterceptor {
     //任意目标对象
     private Object target;
 
-    //添加构造方法
-    public JdkProxy() {
-    }
-
-    public JdkProxy(Object target) {
+    //构造方法
+    public CglibProxy(Object target) {
         this.target = target;
     }
 
+    public CglibProxy() {
+    }
+
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         //开启事务
         MyTransactionManager.beginTransaction(MyJdbcFactory.getConnection());
-        Object returnObject = null;
+        Object result = null;
         try {
-            //调用任意对象的任意方法
-            returnObject = method.invoke(target, args);
+            //调用任意方法
+            result = method.invoke(target, objects);
             //提交事务
             MyTransactionManager.commitTransaction(MyJdbcFactory.getConnection());
         } catch (Exception e) {
@@ -42,6 +40,6 @@ public class JdkProxy implements InvocationHandler {
             //关闭连接
             MyJdbcFactory.closeConnection(MyJdbcFactory.getConnection());
         }
-        return returnObject;
+        return result;
     }
 }
