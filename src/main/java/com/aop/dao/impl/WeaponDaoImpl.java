@@ -13,12 +13,12 @@ import java.sql.SQLException;
 @Repository     //创建dao层实例，放入到容器里
 public class WeaponDaoImpl implements WeaponDao {
     @Override
-    public void update(int rid,int wid) {
+    public void update(int rid, int wid) {
         Connection connection = MyJdbcFactory.getConnection();
         String sql = "update weapon set rid=? where wid=?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,rid);
+            pstmt.setInt(1, rid);
             pstmt.setInt(2, wid);
             pstmt.executeUpdate();
             //用事务关闭连接
@@ -45,7 +45,7 @@ public class WeaponDaoImpl implements WeaponDao {
                 weapon.setWid(rs.getInt("wid"));
             }
             rs.close();
-           // MyJdbcFactory.closeConnection(connection);
+            // MyJdbcFactory.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class WeaponDaoImpl implements WeaponDao {
                 weapon.setWid(rs.getInt("wid"));
             }
             rs.close();
-          //  MyJdbcFactory.closeConnection(connection);
+            //  MyJdbcFactory.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -77,13 +77,13 @@ public class WeaponDaoImpl implements WeaponDao {
 
     @Override
     public int getMaxWid() {
-        Connection connection=MyJdbcFactory.getConnection();
-        String sql="select count(wid) from weapon";
-        int max=0;
+        Connection connection = MyJdbcFactory.getConnection();
+        String sql = "select count(wid) from weapon";
+        int max = 0;
         try {
-            PreparedStatement pstmt=connection.prepareStatement(sql);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet resultSet = pstmt.executeQuery(sql);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 max = resultSet.getInt(1);
             }
         } catch (SQLException e) {
@@ -94,12 +94,12 @@ public class WeaponDaoImpl implements WeaponDao {
 
     @Override
     public boolean weaponExists(int wid) {
-        boolean exist=false;
-        Connection connection=MyJdbcFactory.getConnection();
-        String sql="select * from weapon where wid=?";
+        boolean exist = false;
+        Connection connection = MyJdbcFactory.getConnection();
+        String sql = "select * from weapon where wid=?";
         try {
-            PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setInt(1,wid);
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, wid);
             exist = pstmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();

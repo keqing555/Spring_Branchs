@@ -15,6 +15,7 @@ public class Spring_Transaction {
 
     /**
      * Spring事务测试
+     * 可以实现回滚
      */
     @Test
     public void trans() {
