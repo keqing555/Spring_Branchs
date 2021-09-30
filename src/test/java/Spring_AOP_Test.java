@@ -13,6 +13,9 @@ public class Spring_AOP_Test {
     @Qualifier("weaponServiceImpl_proxy")
     private WeaponService weaponService;
 
+    /**
+     * Spring AOP测试
+     */
     @Test
     public void aop() {
         weaponService.changeWeapon(1, 1);

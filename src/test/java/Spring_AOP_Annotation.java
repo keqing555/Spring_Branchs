@@ -13,6 +13,9 @@ public class Spring_AOP_Annotation {
      @Qualifier("weaponServiceImpl_proxy")
     private WeaponService weaponService;
 
+    /**
+     * Spring注解形式AOP
+     */
     @Test
     public void aop_annotation() {
         weaponService.changeWeapon(1, 1);

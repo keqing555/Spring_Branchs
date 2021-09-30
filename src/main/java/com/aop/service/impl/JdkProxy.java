@@ -36,7 +36,7 @@ public class JdkProxy implements InvocationHandler {
             MyTransactionManager.commitTransaction(MyJdbcFactory.getConnection());
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("回滚事务");
+            //回滚事务
             MyTransactionManager.rollbackTransaction(MyJdbcFactory.getConnection());
         } finally {
             //关闭连接

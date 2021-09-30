@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
+ * 被代理类
  * 在不改变源代码的情况下新增事务
  */
 @Service    //创建该类实例，放到容器里

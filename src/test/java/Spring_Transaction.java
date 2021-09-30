@@ -13,6 +13,9 @@ public class Spring_Transaction {
     @Qualifier("weaponServiceImpl_spring_transaction")
     private WeaponService weaponService;
 
+    /**
+     * Spring事务测试
+     */
     @Test
     public void trans() {
         weaponService.changeWeapon(1, 1);

@@ -29,6 +29,6 @@ public class Spring_Cglib_Test {
         //获取weaponService代理类实例
         WeaponService weaponServiceProxy = (WeaponService) enhancer.create();
         //调用任意方法
-        weaponServiceProxy.changeWeapon(1, 2);
+        weaponServiceProxy.changeWeapon(1, 1);
     }
 }

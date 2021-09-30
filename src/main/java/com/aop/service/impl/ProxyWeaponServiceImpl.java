@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
+ * 新增静态代理类
  * 在不改变源代码的情况下添加事务
- * 新增静态代理类，使用代理类执行目标方法，添加额外功能
+ * 使用代理类执行目标方法，添加额外功能
  */
 @Service
 public class ProxyWeaponServiceImpl implements WeaponService {
@@ -29,7 +30,6 @@ public class ProxyWeaponServiceImpl implements WeaponService {
         } catch (Exception e) {
             e.printStackTrace();
             //回滚事务
-            System.out.println("回滚事务");
             MyTransactionManager.rollbackTransaction(MyJdbcFactory.getConnection());
 
         } finally {
