@@ -33,23 +33,32 @@ https://www.springframework.org/schema/tx/spring-tx.xsd">
     </bean>
 
     <!--切入事务-->
-    <!--开启事务注解配置-->
-    <tx:annotation-driven></tx:annotation-driven>
+    <!--开启注解配置事务支持-->
+    <tx:annotation-driven order="2"></tx:annotation-driven>
 
-    <!--spring的纯xml配置-->
-    <!--这里id不能取weaponAdviser-->
+
+    <!--扩展：spring的纯xml配置-->
+
+    <!--配置事务的通知-->
     <tx:advice id="weapon_adviser" transaction-manager="transactionManager">
         <tx:attributes>
+            <!--NOT_SUPPORTED以非事务方式运行-->
             <tx:method name="changeWeapon" isolation="READ_COMMITTED"
-                       propagation="REQUIRED"/>
+                       propagation="NOT_SUPPORTED"/>
         </tx:attributes>
     </tx:advice>
+    <!--配置AOP-->
     <aop:config>
+        <!--切入点-->
         <aop:pointcut id="weaponPointcut"
                       expression="execution(void com.aop.service.impl.WeaponServiceImpl_spring_transaction.changeWeapon(..))"/>
-        <aop:advisor advice-ref="weapon_adviser" pointcut-ref="weaponPointcut"></aop:advisor>
+        <!--建立切入点和通知的对应关系-->
+        <aop:advisor advice-ref="weapon_adviser" pointcut-ref="weaponPointcut" order="1"></aop:advisor>
     </aop:config>
 
-
+    <!--
+        注解事务和xml事务优先级取决于谁最后配置
+        以上两种配置方式通过order属性决定优先级
+    -->
     <!--注意：以上事务都是声明式事务-->
 </beans>

@@ -25,7 +25,7 @@ public class WeaponServiceImpl_spring_transaction implements WeaponService {
     //在代理方法上添加事务
     //isolation:隔离级别
     //propagation：传播特性
-    //@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     public void changeWeapon(int rid, int wid) {
         Weapon weapon = weaponDao.getWeaponByWid(wid);
         //目标武器是否存在，存在

@@ -9,6 +9,8 @@ http://www.springframework.org/schema/aop
 https://www.springframework.org/schema/aop/spring-aop.xsd
 http://www.springframework.org/schema/context
 https://www.springframework.org/schema/context/spring-context.xsd  ">
+    <!--导入其他xml文件-->
+    <import resource="spring_transaction.xml"></import>
 
     <!--扫描注解-->
     <context:component-scan base-package="com.aop"/>

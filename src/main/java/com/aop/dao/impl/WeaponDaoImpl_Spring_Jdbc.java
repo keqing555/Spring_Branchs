@@ -15,8 +15,8 @@ import java.sql.SQLException;
 /**
  * 使用Spring-Jdbc实现WeaponDao接口
  */
-//@Service
-@Repository
+@Service
+//@Repository
 public class WeaponDaoImpl_Spring_Jdbc implements WeaponDao {
     @Autowired //注入JdbcTemplate实例
     private JdbcTemplate jdbcTemplate;

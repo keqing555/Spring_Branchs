@@ -21,7 +21,7 @@ public class WeaponAdviser {
      * *：代表任意返回数据类型，任意包，任意类，任意方法
      * ..:代表任意参数
      */
-    @Pointcut(value = "execution(* com.aop.service.*.*(..))")
+    @Pointcut(value = "execution(void com.aop.service.*.*(..))")
     public void pc() {
 
     }
