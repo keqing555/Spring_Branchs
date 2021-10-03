@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service    //创建该类实例，放到容器里
 //在代理类上添加事务
-@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+//@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 public class WeaponServiceImpl_spring_transaction implements WeaponService {
     @Autowired  //给成员变量赋初始值（从容器中拿）
     @Qualifier("weaponDaoImpl_Spring_Jdbc")
@@ -23,6 +23,8 @@ public class WeaponServiceImpl_spring_transaction implements WeaponService {
 
     @Override
     //在代理方法上添加事务
+    //isolation:隔离级别
+    //propagation：传播特性
     //@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     public void changeWeapon(int rid, int wid) {
         Weapon weapon = weaponDao.getWeaponByWid(wid);

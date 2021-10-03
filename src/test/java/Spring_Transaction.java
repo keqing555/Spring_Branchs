@@ -15,7 +15,8 @@ public class Spring_Transaction {
 
     /**
      * Spring事务测试
-     * 可以实现回滚
+     * 注解和纯xml配置
+     * 都可以实现回滚
      */
     @Test
     public void trans() {
