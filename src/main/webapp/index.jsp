@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/example/test_1">test_1</a>
+<a href="example/test_1">test_1</a>
 </body>
 </html>

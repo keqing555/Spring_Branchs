@@ -16,7 +16,7 @@
         <servlet-name>spring-mvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
+
     <!--编码过滤器-->
     <filter>
         <filter-name>encodingFilter</filter-name>
