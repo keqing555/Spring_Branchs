@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("example")
-public class ExampleController {
+public class ControllerExample {
     @RequestMapping("test_1")
     public String test_1() {
-        System.out.println("处理请求1");
+        System.out.println("处理请求成功！");
         return "success";
     }
 }
