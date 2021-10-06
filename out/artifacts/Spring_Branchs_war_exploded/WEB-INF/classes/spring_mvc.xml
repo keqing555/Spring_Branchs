@@ -12,9 +12,9 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <!--配置控制层扫描包-->
     <context:component-scan base-package="com.mvc.controller"></context:component-scan>
     <!--创建处理器映射器HandlerMapping-->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>-->
     <!--创建处理器适配器HandlerAdapter-->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+    <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
     <!--创建试图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--指定前缀-->
@@ -23,4 +23,19 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!--以上称为SpringMVC三大组件-->
+
+
+    <!--注册日期转换工具类-->
+    <bean id="dateConverter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.mvc.util.MyDateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
+    <!--这个标签会自动注册处理器映射器，处理器适配器和异常处理器-->
+    <!--开启格式转换服务-->
+    <mvc:annotation-driven conversion-service="dateConverter"></mvc:annotation-driven>
 </beans>
