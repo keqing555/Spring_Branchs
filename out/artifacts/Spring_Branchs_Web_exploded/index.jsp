@@ -2,8 +2,32 @@
 <html>
 <head>
     <title>Title</title>
+    <%--引入jQuery--%>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function sendRole() {
+            $.ajax({
+                type: "POST",
+                url: "annotation/ann4",
+                data: '{"rname":"刻晴","star":"5星","elementalForce":"雷系"}',
+                contentType: "application/json",    //设置数据格式
+                success: function (msg) {
+                    alert(msg);
+                   // location.href = "success";
+                }
+            });
+        }
+    </script>
+    <style>
+        div {
+            background-color: burlywood;
+        }
+    </style>
 </head>
 <body>
+<%--发起Ajax请求--%>
+<button onclick="sendRole()">Ajax请求</button>
+
 <a href="example/test_1">
     <button>测试_link</button>
 </a><br><br>
@@ -13,76 +37,110 @@
 </a>
 <a href="example/defaultParam_2">
     <button>重定向</button>
-</a><br><br>
+</a>
+<a href="example/model">
+    <button>ModelAndView</button>
+</a>
+<a href="html/static_resource_page.html">
+    <button>访问静态资源</button>
+</a>
+<hr>
+<a href="annotation/ann">
+    <button>默认参数</button>
+</a>
+<a href="annotation/ann2">
+    <button>获取请求头</button>
+</a>
+
+
+<br><br>
 <%--自定义类型，日期转换--%>
 <form action="example/define" method="get">
     日期：<input type="date" name="date">
     <input type="submit" value="日期转换">
 </form>
-<br>
 
 <%--传入简单数据类型--%>
 <form action="example/test_2" method="get">
-    角色：<input type="text" name="rolename"><br><br>
-    等级：<input type="number" name="grade"><br><br>
-    星级：<input type="number" name="star"><br><br>
-    <input type="submit" value="一键突破">
+    <div style="float: left;margin-right:100px;">
+        <hr>
+        角 色：<input type="text" name="rolename"><br><br>
+        等 级：<input type="number" name="grade"><br><br>
+        星 级：<input type="number" name="star"><br><br>
+        <input type="submit" value="一键突破">
+    </div>
 </form>
-<br>
 
 <%--传入对象数据类型--%>
 <form action="example/role" method="post">
-    角色：<input type="text" name="rname"><br><br>
-    地区：<input type="text" name="area"><br><br>
-    年龄：<input type="number" name="age"><br><br>
-    星级：<input type="number" name="star"><br><br>
-    元素力：<input type="text" name="elementalForce"><br><br>
-    <input type="submit" value="一键突破"><br><br>
+    <div style="float: left;margin-right:100px;">
+        <hr>
+        角 色：<input type="text" name="rname"><br><br>
+        地 区：<input type="text" name="area"><br><br>
+        年 龄：<input type="number" name="age"><br><br>
+        星 级：<input type="number" name="star"><br><br>
+        元素力：<input type="text" name="elementalForce"><br><br>
+        <input type="submit" value="一键突破">
+    </div>
 </form>
-<br>
 
 <%--传入复杂数据类型--%>
 <form action="example/weapon" method="post">
-    <div>
-        <div style="float: left;margin:20px;">
-            角色：<input type="text" name="rname"><br>
-            地区：<input type="text" name="area"><br>
-            年龄：<input type="number" name="age"><br>
-            星级：<input type="number" name="star"><br>
-            元素力：<input type="text" name="elementalForce"><br>
-            爱好：<input type="text" name="hobbies"><br>
-            <input type="text" name="hobbies">
-        </div>
-        <div style="float: left;margin:20px;">
-            武器：<br><br>
-            武器名：<input type="text" name="weapon.wname"><br>
-            武器类型：<input type="text" name="wapon.type">
-        </div>
-        <div style="float: left;margin:20px;">
-            List武器库：<br><br>
-            武器1名称：<input type="text" name="weaponList[0].wname"><br>
-            武器1类型： <input type="text" name="weaponList[0].type"><br><br>
-            武器2名称：<input type="text" name="weaponList[1].wname"><br>
-            武器2类型 <input type="text" name="weaponList[1].type">
-        </div>
-        <div style="float: left;margin:20px;">
-            Set武器库：<br><br>
-            <%--Set集合无序，绑定参数是必须要先初始化--%>
-            武器1名称：<input type="text" name="weaponSet[0].wname"><br>
-            武器1类型： <input type="text" name="weaponSet[0].type"><br><br>
-            武器2名称：<input type="text" name="weaponSet[1].wname"><br>
-            武器2类型： <input type="text" name="weaponSet[1].type">
-        </div>
-        <div style="margin:20px;">
-            Map武器库：<br><br>
-            武器1名称：<input type="text" name="weaponMap['key1'].wname"><br>
-            武器1类型： <input type="text" name="weaponMap['key1'].type"><br><br>
-            武器2名称：<input type="text" name="weaponMap['key2'].wname"><br>
-            武器2类型： <input type="text" name="weaponMap['key2'].type">
-        </div>
+    <div style="clear:left;float:left;margin:20px;">
+        <hr>
+        角 色：<input type="text" name="rname"><br>
+        地 区：<input type="text" name="area"><br>
+        年 龄：<input type="number" name="age"><br>
+        星 级：<input type="number" name="star"><br>
+        元素力：<input type="text" name="elementalForce"><br>
+        爱 好：<input type="text" name="hobbies"><br>
+        <input type="text" name="hobbies"><br><br>
+        <input type="submit" value="一键变强">
     </div>
-    <br>
-    <input type="submit" value="一键变强">
+    <div style="float: left;margin:20px;">
+        武器：<br><br>
+        武器名称：<input type="text" name="weapon.wname"><br>
+        武器类型：<input type="text" name="wapon.type">
+        <hr>
+    </div>
+    <div style="float: left;margin:20px;">
+        List武器库：<br><br>
+        武器1名称：<input type="text" name="weaponList[0].wname"><br>
+        武器1类型：<input type="text" name="weaponList[0].type"><br><br>
+        武器2名称：<input type="text" name="weaponList[1].wname"><br>
+        武器2类型：<input type="text" name="weaponList[1].type">
+        <hr>
+    </div>
+    <div style="float: left;margin:20px;">
+        Set武器库：<br><br>
+        <%--Set集合无序，绑定参数是必须要先初始化--%>
+        武器1名称：<input type="text" name="weaponSet[0].wname"><br>
+        武器1类型：<input type="text" name="weaponSet[0].type"><br><br>
+        武器2名称：<input type="text" name="weaponSet[1].wname"><br>
+        武器2类型：<input type="text" name="weaponSet[1].type">
+        <hr>
+    </div>
+    <div style="float: left;margin:20px;">
+        Map武器库：<br><br>
+        武器1名称：<input type="text" name="weaponMap['key1'].wname"><br>
+        武器1类型：<input type="text" name="weaponMap['key1'].type"><br><br>
+        武器2名称：<input type="text" name="weaponMap['key2'].wname"><br>
+        武器2类型：<input type="text" name="weaponMap['key2'].type">
+        <hr>
+    </div>
 </form>
+
+<%--获取请求体--%>
+<form action="annotation/ann3" method="post">
+    <div style="clear:left;float:left;margin:20px;">
+        名称：<input type="text" name="username"><br><br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="登录">
+    </div>
+</form>
+
+
+
 </body>
+
 </html>

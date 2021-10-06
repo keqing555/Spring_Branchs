@@ -18,16 +18,20 @@
     </servlet-mapping>
 
     <!--编码过滤器-->
+    <!--Tomcat对GET和POST请求处理方式不同
+        GET：要改 tomcat 的 server.xml配置文件：
+	<Connector connectionTimeout="20000" port="8080"protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8"/>
+	    POST：用filter过滤器-->
     <filter>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
+            <param-value>utf-8</param-value>
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>

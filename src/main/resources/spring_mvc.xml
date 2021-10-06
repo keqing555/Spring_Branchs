@@ -35,6 +35,16 @@ https://www.springframework.org/schema/context/spring-context.xsd">
         </property>
     </bean>
 
+    <!--
+        处理静态资源
+        两种方式只能选择一种
+    -->
+    <!--1,交给DefaultServlet处理-->
+        <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <!--2,指定静态资源的访问路径-->
+<!--    <mvc:resources location="/html/" mapping="/html/**"></mvc:resources>-->
+<!--    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>-->
+
     <!--这个标签会自动注册处理器映射器，处理器适配器和异常处理器-->
     <!--开启格式转换服务-->
     <mvc:annotation-driven conversion-service="dateConverter"></mvc:annotation-driven>

@@ -2,7 +2,10 @@ package com.mvc.controller;
 
 import com.mvc.bean.Role;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -68,6 +71,16 @@ public class ControllerExample {
     public String forward() {
         System.out.println("我是请求转发和重定向");
         return "success";
+    }
+
+    //把数据放到请求域Request
+    @RequestMapping("model")
+    public ModelAndView model(Model model, ModelMap modelMap, ModelAndView modelAndView) {
+        model.addAttribute("model", "model数据");
+        modelMap.addAttribute("modelMap", "modelMap数据");
+        modelAndView.addObject("modelAndView", "modelAndView数据");
+        modelAndView.setViewName("success");
+        return modelAndView;
     }
 
     //自定义类型参数绑定:日期转换
