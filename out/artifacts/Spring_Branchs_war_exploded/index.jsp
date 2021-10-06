@@ -6,19 +6,6 @@
         可能会不奏效，Rebuild Project--%>
     <script src="js/jquery-3.6.0.js"></script>
 
-    <script>
-        function sendRole() {
-            $.ajax({
-                type: "POST",
-                url: "annotation/ann4",
-                data: '{"rname":"刻晴","star":"5星","elementalForce":"雷系"}',
-                contentType: "application/json",    //设置数据格式
-                success: function (msg) {
-                    alert(msg);
-                }
-            });
-        }
-    </script>
     <style>
         div {
             background-color: burlywood;
@@ -26,8 +13,6 @@
     </style>
 </head>
 <body>
-<%--发起Ajax请求--%>
-<button onclick="sendRole()">Ajax请求</button>
 
 <a href="example/test_1">
     <button>测试_link</button>
@@ -52,7 +37,16 @@
 <a href="annotation/ann2">
     <button>获取请求头</button>
 </a>
-
+<button onclick="sendRole()">Ajax请求</button>
+<a href="annotation/cookie">
+    <button>Cookie</button>
+</a>
+<a href="annotation/publicParam">
+    <button>公共参数</button>
+</a>
+<a href="annotation/session">
+    <button>session域</button>
+</a>
 
 <br><br>
 <%--自定义类型，日期转换--%>
@@ -140,7 +134,26 @@
     </div>
 </form>
 
-
 </body>
+<script>
 
+    // testLink();
+    //
+    // function testLink() {
+    //     location.href = "example/test_1";
+    //
+    // }
+
+    function sendRole() {
+        $.ajax({
+            type: "POST",
+            url: "annotation/ann4",
+            data: '{"rname":"刻晴","star":"5星","elementalForce":"雷系"}',
+            contentType: "application/json",    //设置数据格式
+            success: function (msg) {
+                alert(msg);
+            }
+        });
+    }
+</script>
 </html>

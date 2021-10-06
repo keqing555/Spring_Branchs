@@ -2,16 +2,16 @@ package com.mvc.controller;
 
 import com.mvc.bean.Role;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 注解传参方式
  */
 @Controller
 @RequestMapping("annotation")
+//注解在类上，作用是将请求域中的参数放到session域，共享参数
+@SessionAttributes(value = {"model", "modelAndView"})
 public class Controller_Annotation {
     //用注解传参数
     @RequestMapping("ann")
@@ -43,4 +43,29 @@ public class Controller_Annotation {
         return "success";
     }
 
+    //注入CookieValue
+    //ModelAttribute修饰在参数上
+    @RequestMapping("cookie")
+    public String cookie(@CookieValue("JSESSIONID") String cookie, @ModelAttribute("publicParam") String publicParam) {
+        System.out.println("JSESSIONID:" + cookie);
+        System.out.println("获取到的公共参数是：" + publicParam);
+        return "success";
+    }
+
+    //ModelAttribute修饰在方法上
+    //在方法参数上修饰@ModelAttribute，在运行时会先运行这个方法
+    @ModelAttribute("publicParam")
+    public String modelAttribute() {
+        //获取公共参数
+        return "刻晴别刮了";
+    }
+
+    //在请求域存放数据
+    @RequestMapping("session")
+    public ModelAndView session(ModelAndView modelAndView) {
+        modelAndView.addObject("model", "匣里龙吟");
+        modelAndView.addObject("modelMap", "绿剑");
+        modelAndView.addObject("modelAndView", "黑剑");
+        return modelAndView;
+    }
 }
