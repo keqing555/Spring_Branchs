@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"  %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
@@ -148,6 +148,18 @@
         <input type="submit" value="登录">
     </div>
 </form>
+
+<%--文件上传--%>
+<form action="/file/upload" method="post" enctype="multipart/form-data" >
+    <div style="float:left;margin:10px">
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    </div>
+</form>
+<%--文件下载--%>
+<a href="/file/download?fileName=ef423850-28aa-4ec2-b892-d5150a90fbe0雷电将军PV.mp4&filePath=D:/Upload">
+    <button>下载</button>
+</a>
 
 </body>
 <script>
