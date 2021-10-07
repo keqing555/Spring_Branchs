@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  %>
 <html>
 <head>
     <title>Title</title>
@@ -47,6 +47,10 @@
 <a href="annotation/session">
     <button>session域</button>
 </a>
+<hr>
+<a href="/REST.jsp">
+    <button>RESTful</button>
+</a>
 
 <br><br>
 <%--自定义类型，日期转换--%>
@@ -54,6 +58,7 @@
     日期：<input type="date" name="date">
     <input type="submit" value="日期转换">
 </form>
+
 
 <%--传入简单数据类型--%>
 <form action="example/test_2" method="get">
@@ -81,7 +86,7 @@
 
 <%--传入复杂数据类型--%>
 <form action="example/weapon" method="post">
-    <div style="clear:left;float:left;margin:20px;">
+    <div style="clear:left;float:left;margin:10px;">
         <hr>
         角 色：<input type="text" name="rname"><br>
         地 区：<input type="text" name="area"><br>
@@ -92,13 +97,13 @@
         <input type="text" name="hobbies"><br><br>
         <input type="submit" value="一键变强">
     </div>
-    <div style="float: left;margin:20px;">
+    <div style="float: left;margin:10px;">
         武器：<br><br>
         武器名称：<input type="text" name="weapon.wname"><br>
         武器类型：<input type="text" name="wapon.type">
         <hr>
     </div>
-    <div style="float: left;margin:20px;">
+    <div style="float: left;margin:10px;">
         List武器库：<br><br>
         武器1名称：<input type="text" name="weaponList[0].wname"><br>
         武器1类型：<input type="text" name="weaponList[0].type"><br><br>
@@ -106,7 +111,7 @@
         武器2类型：<input type="text" name="weaponList[1].type">
         <hr>
     </div>
-    <div style="float: left;margin:20px;">
+    <div style="float: left;margin:10px;">
         Set武器库：<br><br>
         <%--Set集合无序，绑定参数是必须要先初始化--%>
         武器1名称：<input type="text" name="weaponSet[0].wname"><br>
@@ -115,7 +120,7 @@
         武器2类型：<input type="text" name="weaponSet[1].type">
         <hr>
     </div>
-    <div style="float: left;margin:20px;">
+    <div style="float: left;margin:10px;">
         Map武器库：<br><br>
         武器1名称：<input type="text" name="weaponMap['key1'].wname"><br>
         武器1类型：<input type="text" name="weaponMap['key1'].type"><br><br>
@@ -127,7 +132,7 @@
 
 <%--获取请求体--%>
 <form action="annotation/ann3" method="post">
-    <div style="clear:left;float:left;margin:20px;">
+    <div style="clear:left;float:left;margin:10px;">
         名称：<input type="text" name="username"><br><br>
         密码：<input type="password" name="password"><br>
         <input type="submit" value="登录">

@@ -4,8 +4,8 @@
     <title>Title</title>
 </head>
 <body>
-请求成功！1s后返回...
-<br>
+<h3>请求成功！   1s后返回...</h3>
+
 model:${requestScope.model}<br>
 modelMap:${requestScope.modelMap}<br>
 modelAndView:${requestScope.modelAndView}
@@ -13,7 +13,7 @@ modelAndView:${requestScope.modelAndView}
 <script>
     setTimeout(back,1000);
     function back(){
-       location.href="../index.jsp";
+       location.href="/index.jsp";
     }
 </script>
 </html>
