@@ -22,15 +22,15 @@ public class Controller_REST {
     //修改
     @RequestMapping(value = "role", method = RequestMethod.PUT)
     public String updateRole(Role role) {
-        System.out.println("新增角色：" + role);
-        return "success";
+        System.out.println("修改角色：" + role);
+        return "redirect:/success.jsp";     //这里使用重定向才能跳转，不知道为啥
     }
 
     //删除
     @RequestMapping(value = "role/{rid}", method = RequestMethod.DELETE)
     public String deleteRole(@PathVariable int rid) {
         System.out.println("删除角色rid：" + rid);
-        return "success";
+        return "redirect:/success.jsp";
     }
 
     //查询

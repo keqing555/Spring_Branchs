@@ -43,5 +43,6 @@
     <filter-mapping>
         <filter-name>methodFilter</filter-name>
         <url-pattern>/*</url-pattern>
+<!--        <dispatcher>FORWARD</dispatcher>-->
     </filter-mapping>
 </web-app>

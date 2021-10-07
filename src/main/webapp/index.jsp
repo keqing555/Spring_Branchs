@@ -51,6 +51,12 @@
 <a href="/REST.jsp">
     <button>RESTful</button>
 </a>
+<a href="/data/json">
+    <button>json</button>
+</a>
+
+
+
 
 <br><br>
 <%--自定义类型，日期转换--%>
