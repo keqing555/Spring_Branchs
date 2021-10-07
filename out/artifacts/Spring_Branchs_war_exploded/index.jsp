@@ -54,8 +54,12 @@
 <a href="/data/json">
     <button>json</button>
 </a>
-
-
+<a href="/data/forward">
+    <button>forward</button>
+</a>
+<a href="/data/redirect?data=刻晴">
+    <button>redirect</button>
+</a>
 
 
 <br><br>
