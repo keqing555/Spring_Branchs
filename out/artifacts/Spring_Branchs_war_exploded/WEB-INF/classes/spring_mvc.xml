@@ -56,10 +56,11 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <!--开启格式转换服务conversion-service-->
     <mvc:annotation-driven conversion-service="dateConverter"></mvc:annotation-driven>
 
+    <!--创建异常处理器-->
+    <bean class="com.mvc.util.MyExceptionHandler"></bean>
+
     <!--创建文件上传对象，id固定-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
-    <!--创建异常处理器-->
-    <bean class="com.mvc.util.MyExceptionHandler"></bean>
 
 </beans>
