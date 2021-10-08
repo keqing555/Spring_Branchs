@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 注解传参方式
  */
@@ -32,7 +34,7 @@ public class Controller_Annotation {
     //注解获取请求体
     @RequestMapping("ann3")
     public String ann3(@RequestBody String data) {
-        System.out.println(data);
+        System.out.println(data);   //打印乱码
         return "success";
     }
 
@@ -67,5 +69,23 @@ public class Controller_Annotation {
         modelAndView.addObject("modelMap", "绿剑");
         modelAndView.addObject("modelAndView", "黑剑");
         return modelAndView;
+    }
+
+    //登录
+    @RequestMapping("login")
+    public String login(HttpSession session, String username) {
+        if (username != null && username != "") {
+            session.setAttribute("logged", "logged");
+            return "success";
+        } else {
+            return "redirect:/login.jsp";
+        }
+    }
+
+    //注销
+    @RequestMapping("logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login.jsp";
     }
 }

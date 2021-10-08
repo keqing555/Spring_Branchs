@@ -21,7 +21,7 @@ import java.util.Date;
 public class ControllerExample {
     @RequestMapping("test_1")
     public String test_1() {
-        System.out.println("test_1:处理请求成功！");
+        System.out.println("test_link:连接成功！");
         return "success";
     }
 

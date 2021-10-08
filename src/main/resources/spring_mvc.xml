@@ -62,5 +62,13 @@ https://www.springframework.org/schema/context/spring-context.xsd">
     <!--创建文件上传对象，id固定-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
+    <!--注册拦截器，执行顺序为注册顺序-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"></mvc:mapping>
+            <mvc:exclude-mapping path="/annotation/login"></mvc:exclude-mapping>
+            <bean class="com.mvc.util.Login_Interceptor"></bean>
+        </mvc:interceptor>
 
+    </mvc:interceptors>
 </beans>

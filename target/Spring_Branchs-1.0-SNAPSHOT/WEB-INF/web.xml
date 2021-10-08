@@ -3,24 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--servlet配置-->
-    <servlet>
-        <servlet-name>spring-mvc</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring_mvc.xml</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>spring-mvc</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 
     <!--编码过滤器-->
     <!--Tomcat对GET和POST请求处理方式不同
-        GET：要改 tomcat 的 server.xml配置文件：
-	<Connector connectionTimeout="20000" port="8080"protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8"/>
+        GET：要改 tomcat 的 server.xml配置文件的Connector标签
 	    POST：用filter过滤器-->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
@@ -43,6 +29,21 @@
     <filter-mapping>
         <filter-name>methodFilter</filter-name>
         <url-pattern>/*</url-pattern>
-<!--        <dispatcher>FORWARD</dispatcher>-->
+        <!--        <dispatcher>FORWARD</dispatcher>-->
     </filter-mapping>
+
+    <!--servlet配置-->
+    <servlet>
+        <servlet-name>spring-mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring_mvc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 </web-app>

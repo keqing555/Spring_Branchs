@@ -64,9 +64,15 @@
 <a href="/file/download?fileName=asd.jpg&filePath=D:/Upload">
     <button>下载</button>
 </a>
+<a href="login.jsp">
+    <button>Login</button>
+</a>
+<a href="/annotation/logout">
+    <button>Logout</button>
+</a>
 <br><br>
 <%--文件上传--%>
-<form action="/file/upload" method="post" enctype="multipart/form-data" >
+<form action="/file/upload" method="post" enctype="multipart/form-data">
     <div style="width:200px;">
         <input type="file" name="file">
         <input type="submit" value="上传">
@@ -78,9 +84,10 @@
     <input type="submit" value="日期转换">
 </form>
 
-<%--传入简单数据类型--%>
+
 <form action="example/test_2" method="get">
     <div style="float: left;margin-right:100px;">
+        传入简单数据类型：
         <hr>
         角 色：<input type="text" name="rolename"><br><br>
         等 级：<input type="number" name="grade"><br><br>
@@ -89,9 +96,10 @@
     </div>
 </form>
 
-<%--传入对象数据类型--%>
+
 <form action="example/role" method="post">
     <div style="float: left;margin-right:100px;">
+        传入对象数据类型：
         <hr>
         角 色：<input type="text" name="rname"><br><br>
         地 区：<input type="text" name="area"><br><br>
@@ -102,9 +110,10 @@
     </div>
 </form>
 
-<%--传入复杂数据类型--%>
+
 <form action="example/weapon" method="post">
     <div style="clear:left;float:left;margin:10px;">
+        传入复杂数据类型：
         <hr>
         角 色：<input type="text" name="rname"><br>
         地 区：<input type="text" name="area"><br>
@@ -148,15 +157,16 @@
     </div>
 </form>
 
-<%--获取请求体--%>
+
 <form action="annotation/ann3" method="post">
     <div style="clear:left;float:left;margin:10px;">
+        获取请求体：
+        <hr>
         名称：<input type="text" name="username"><br><br>
         密码：<input type="password" name="password"><br>
-        <input type="submit" value="登录">
+        <input type="submit" value="获取请求体">
     </div>
 </form>
-
 
 
 </body>
