@@ -28,4 +28,6 @@ public interface EfunctionMapper {
     int updateByPrimaryKeySelective(Efunction record);
 
     int updateByPrimaryKey(Efunction record);
+    //根据eid查找功能
+    List<Efunction> findFunctionByEid(long eid);
 }

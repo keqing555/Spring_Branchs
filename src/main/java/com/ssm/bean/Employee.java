@@ -24,6 +24,15 @@ public class Employee {
     private String remark1;
 
     private String remark2;
+    private String[] rids;
+
+    public String[] getRids() {
+        return rids;
+    }
+
+    public void setRids(String[] rids) {
+        this.rids = rids;
+    }
 
     public Long getEid() {
         return eid;

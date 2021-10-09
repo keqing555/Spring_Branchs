@@ -40,11 +40,11 @@
         $('#ff').form('submit', {
             url:"/employee/loginCheck",
             success:function(data){
-                var obj=eval("("+data+")")
+                var obj=eval("("+data+")");
                 alert(obj.message);
                 if(obj.success){
                     if(obj.loginSuccess){
-                        window.location.href="/main.html"
+                        window.location.href="/main.html";
                     }else{
                         window.location.reload();
                     }
