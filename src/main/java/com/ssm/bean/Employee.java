@@ -1,18 +1,27 @@
 package com.ssm.bean;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ssm.util.PageUtil;
+import org.springframework.format.annotation.DateTimeFormat;
 
-public class Employee {
+import java.util.Date;
+import java.util.List;
+
+public class Employee extends PageUtil {
     private Long eid;
 
     private String ename;
 
     private Long esex;
+    private String esexStr;//新增性别对应字段
 
     private Long eage;
 
     private String etelephone;
-
+    //接收时间格式
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //响应时间格式
+    @JsonFormat(pattern = "yyyy年MM月dd日", timezone = "GMT+8")
     private Date hiredate;
 
     private String jobnumber;
@@ -25,6 +34,22 @@ public class Employee {
 
     private String remark2;
     private String[] rids;
+    private List<Erole> eroleList;
+    public String getEsexStr() {
+        return esexStr;
+    }
+
+    public List<Erole> getEroleList() {
+        return eroleList;
+    }
+
+    public void setEroleList(List<Erole> eroleList) {
+        this.eroleList = eroleList;
+    }
+
+    public void setEsexStr(String esexStr) {
+        this.esexStr = esexStr;
+    }
 
     public String[] getRids() {
         return rids;

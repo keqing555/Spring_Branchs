@@ -9,15 +9,15 @@ public class PageUtil {
     //每页条数
     private int rows;
     //每页起始条数
-    private int index;
+    private int limitStart;
 
     public PageUtil() {
     }
 
-    public PageUtil(int page, int rows, int index) {
+    public PageUtil(int page, int rows, int limitStart) {
         this.page = page;
         this.rows = rows;
-        this.index = index;
+        this.limitStart = limitStart;
     }
 
     public int getPage() {
@@ -36,11 +36,11 @@ public class PageUtil {
         this.rows = rows;
     }
 
-    public int getIndex() {
-        return index;
+    public int getLimitStart() {
+        return limitStart;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setLimitStart(int limitStart) {
+        this.limitStart = limitStart;
     }
 }

@@ -1,6 +1,7 @@
 com\ssm\bean\EfunctionExample.class
 com\ssm\bean\EmployeeRoleExample$Criterion.class
 com\ssm\bean\RoleFunExample.class
+com\ssm\controller\RoleController.class
 com\ssm\dao\MessageMapper.class
 com\ssm\bean\RoleFunExample$GeneratedCriteria.class
 com\ssm\dao\EmployeeRoleMapper.class
@@ -8,6 +9,7 @@ com\ssm\bean\Employee.class
 com\ssm\bean\EmployeeExample$Criterion.class
 com\ssm\dao\EroleMapper.class
 com\ssm\bean\EmployeeRoleExample.class
+com\ssm\service\RoleServiceImpl.class
 com\ssm\util\PageUtil.class
 com\ssm\bean\EfunctionExample$GeneratedCriteria.class
 com\ssm\bean\EroleExample.class
@@ -37,6 +39,7 @@ com\ssm\service\EmployeeServiceImpl.class
 com\ssm\bean\MessageExample$GeneratedCriteria.class
 com\ssm\bean\Efunction.class
 com\ssm\bean\RoleFunExample$Criteria.class
+com\ssm\service\RoleService.class
 com\ssm\bean\MessageExample$Criteria.class
 com\ssm\service\EmployeeService.class
 com\ssm\bean\MessageExample$Criterion.class

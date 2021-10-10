@@ -28,4 +28,8 @@ public interface EroleMapper {
     int updateByPrimaryKeySelective(Erole record);
 
     int updateByPrimaryKey(Erole record);
+    //查询所有角色
+     List<Erole> getAllRoles();
+     //获取当前员工角色
+    List<Erole> getRoleByEid(long eid);
 }

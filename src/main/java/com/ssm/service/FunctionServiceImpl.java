@@ -23,14 +23,13 @@ public class FunctionServiceImpl implements FunctionService {
 
     @Override
     public JSONArray transfer(List<Efunction> funList) {
-
         JSONArray jsonArray = new JSONArray();
         //获取当前用户的一级功能
         for (Efunction fun : funList) {
             if (fun.getParentid() == 0) {
                 JSONObject jsonObject_1 = new JSONObject();
                 jsonObject_1.put("id", fun.getFid());
-                jsonObject_1.put("test", fun.getFname());
+                jsonObject_1.put("text", fun.getFname());
                 //获取一级功能下的二级功能
                 JSONArray children = new JSONArray();
                 for (Efunction child : funList) {
@@ -41,9 +40,9 @@ public class FunctionServiceImpl implements FunctionService {
                         jsonObject_2.put("url", child.getUrl());
                         children.add(jsonObject_2);
                     }
-                    jsonObject_1.put("children", children);
-                    jsonArray.add(jsonObject_1);
                 }
+                jsonObject_1.put("children", children);
+                jsonArray.add(jsonObject_1);
             }
         }
         return jsonArray;

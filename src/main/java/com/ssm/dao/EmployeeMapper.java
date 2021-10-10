@@ -29,4 +29,11 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(Employee record);
 
+    //根据条件分页查询员工信息
+    List<Employee> findEmployeesByCondition(Employee employee);
+
+    //根据查询条件查找总条数
+    int countByCondition(Employee employee);
+
+
 }

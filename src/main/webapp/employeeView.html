@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>修改员工页面</title>
+    <title>员工详情页面</title>
     <link rel="stylesheet" type="text/css" href="/css/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/css/demo/demo.css">
@@ -62,8 +62,7 @@
         </table>
     </form>
     <div style="text-align:center;padding:5px">
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="back()">确定</a>
     </div>
 </div>
 
@@ -92,25 +91,10 @@
             }
         });
     });
-    function submitForm(){
-        $('#ff').form('submit', {
-            url:"/employee/updateEmployee",
-            success:function(data){
-                var obj=eval("("+data+")")
-                alert(obj.message);
-                if(obj.success){
-                    window.location.href="/employeeList.html"
-                }else{
-                    window.location.reload();
-                }
-            }
-        });
-    }
-    function clearForm(){
-        // $('#ff').form('clear');
-        history.back();
-    }
-
+function back(){
+  //  location.href="/main.html";
+    history.back();
+}
     function myformatter(date){
         var y = date.getFullYear();
         var m = date.getMonth()+1;
