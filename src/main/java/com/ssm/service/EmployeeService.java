@@ -43,6 +43,11 @@ public interface EmployeeService {
     BaseResult deleteEmployee(long eid);
 
     /**
+     * 批量删除
+     */
+    BaseResult deleteAll(String eids);
+
+    /**
      * 根据eid查找员工
      */
     Employee findEmployeeByEid(long eid);

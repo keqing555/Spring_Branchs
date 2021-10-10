@@ -158,7 +158,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         return baseResult;
     }
 
-
     @Override
     @Transactional
     public BaseResult deleteEmployee(long eid) {
@@ -183,6 +182,27 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.println("删除失败，混滚事务。。。");
             //回滚
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        }
+        return baseResult;
+    }
+
+    @Override
+    //@Transactional
+    public BaseResult deleteAll(String eids) {
+        BaseResult baseResult = new BaseResult();
+        try {
+            String[] split = eids.split(",");
+            for (String id : split) {
+                long eid = Long.parseLong(id);
+                deleteEmployee(eid);
+            }
+            baseResult.setSuccess(true);
+            baseResult.setMessage("删除成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setSuccess(false);
+            baseResult.setMessage("删除失败！回滚。。。");
+            // TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
         return baseResult;
     }

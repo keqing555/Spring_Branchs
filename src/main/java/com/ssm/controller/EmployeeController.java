@@ -136,9 +136,14 @@ public class EmployeeController {
     public BaseResult deleteEmployee(long eid) {
         return employeeService.deleteEmployee(eid);
     }
+
     /**
-     * 批量删除      fids?
+     * 批量删除
      */
-    //public BaseResult batchDelete(long[] fids);
+    @RequestMapping("batchDelete")
+    @ResponseBody
+    public BaseResult batchDelete(String eids) {
+        return employeeService.deleteAll(eids);
+    }
 
 }

@@ -114,13 +114,13 @@
     function BatchDelete() {
         if (confirm("是否确认删除？")) {
             var rows = $('#dg').datagrid('getChecked');
-            var fids = '';
+            var eids = '';
             for (var i = 0; i < rows.length; i++) {
-                fids += rows[i].fid + ",";
+                eids += rows[i].eid + ",";
             }
             $.ajax({
                 type: "POST",
-                url: "/function/batchDelete?fids=" + fids,
+                url: "/employee/batchDelete?eids=" + eids,
                 success: function (data) {
                     alert(data.message);
                     window.location.reload();
