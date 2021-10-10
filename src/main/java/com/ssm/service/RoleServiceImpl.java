@@ -1,5 +1,6 @@
 package com.ssm.service;
 
+import com.ssm.bean.Employee;
 import com.ssm.bean.Erole;
 import com.ssm.dao.EroleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Erole> getRoleByEid(long eid) {
         return eroleMapper.getRoleByEid(eid);
+    }
+
+    @Override
+    public List<Erole> findRolesByCondition(Erole role) {
+        return eroleMapper.findRolesByCondition(role);
     }
 }

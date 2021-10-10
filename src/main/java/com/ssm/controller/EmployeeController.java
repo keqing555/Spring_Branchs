@@ -79,10 +79,6 @@ public class EmployeeController {
         BaseResult baseResult = employeeService.addEmployee(employee);
         return baseResult;
     }
-/**
- * 查看员工详情
- */
-
 
     /**
      * 获取要修改的员工，并存放到session域

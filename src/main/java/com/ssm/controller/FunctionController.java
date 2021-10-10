@@ -32,4 +32,13 @@ public class FunctionController {
         JSONArray jsonArray = functionService.transfer(funList);
         return jsonArray;
     }
+
+    /**
+     * 根据分页条件获取功能
+     */
+    @RequestMapping("findFunctionsByCondition")
+    @ResponseBody
+    public List<Efunction> findFunctionsByCondition(Efunction function) {
+        return functionService.findFunctionsByCondition(function);
+    }
 }

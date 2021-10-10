@@ -30,4 +30,6 @@ public interface EfunctionMapper {
     int updateByPrimaryKey(Efunction record);
     //根据eid查找功能
     List<Efunction> findFunctionByEid(long eid);
+    //根据分页条件查询功能
+    List<Efunction> findFunctionsByCondition(Efunction function);
 }

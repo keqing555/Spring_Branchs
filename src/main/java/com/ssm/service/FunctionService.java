@@ -12,4 +12,7 @@ public interface FunctionService {
 
     //把当前用户功能转为前端指定的json格式
     JSONArray transfer(List<Efunction> funList);
+
+    //根据分页条件获取功能
+    List<Efunction> findFunctionsByCondition(Efunction function);
 }

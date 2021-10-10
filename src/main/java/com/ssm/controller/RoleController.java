@@ -1,5 +1,6 @@
 package com.ssm.controller;
 
+import com.ssm.bean.Employee;
 import com.ssm.bean.Erole;
 import com.ssm.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,14 @@ public class RoleController {
     @ResponseBody
     public List<Erole> getAllRoles() {
         return roleService.getAllRoles();
+    }
+
+    /**
+     * 根据分页条件获取角色
+     */
+    @RequestMapping("findRolesByCondition")
+    @ResponseBody
+    public List<Erole> findRolesByCondition(Erole role) {
+        return roleService.findRolesByCondition(role);
     }
 }

@@ -18,7 +18,14 @@
                  left join employee_role er on er.rid = rf.rid
         where eid = #{eid}
     </select>
-
+    <select id="findFunctionsByCondition" resultMap="BaseResultMap">
+        select * from efunction
+        <where>
+            <if test="fname!=null">
+                fname like concat('%',#{fname},'%')
+            </if>
+        </where>
+    </select>
 
     <sql id="Example_Where_Clause">
         <where>

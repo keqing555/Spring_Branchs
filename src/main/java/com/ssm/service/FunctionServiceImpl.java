@@ -48,5 +48,10 @@ public class FunctionServiceImpl implements FunctionService {
         return jsonArray;
     }
 
+    @Override
+    public List<Efunction> findFunctionsByCondition(Efunction function) {
+        return efunctionMapper.findFunctionsByCondition(function);
+    }
+
 
 }

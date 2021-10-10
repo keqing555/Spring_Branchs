@@ -1,5 +1,6 @@
 package com.ssm.dao;
 
+import com.ssm.bean.Erole;
 import com.ssm.bean.RoleFun;
 import com.ssm.bean.RoleFunExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,5 @@ public interface RoleFunMapper {
     int updateByPrimaryKeySelective(RoleFun record);
 
     int updateByPrimaryKey(RoleFun record);
+
 }
