@@ -23,6 +23,7 @@ public class FunctionServiceImpl implements FunctionService {
 
     @Override
     public JSONArray transfer(List<Efunction> funList) {
+
         JSONArray jsonArray = new JSONArray();
         //获取当前用户的一级功能
         for (Efunction fun : funList) {

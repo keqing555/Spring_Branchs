@@ -21,6 +21,7 @@ public class EmployeeController {
      * 登录校验
      */
     @RequestMapping("loginCheck")
+    @ResponseBody
     public EmployeeResult loginCheck(String jobnumber, String password, HttpSession session) {
         EmployeeResult result = employeeService.loginCheck(jobnumber, password);
         if (result.isLoginSuccess()) {
@@ -33,10 +34,22 @@ public class EmployeeController {
     /**
      * 获取当前登录用户
      */
+    @RequestMapping("getCurrentEmployee")
+    @ResponseBody
     public Employee getCurrentEmployee(HttpSession session) {
         Employee employee = (Employee) session.getAttribute("employee");
         return employee;
     }
+
+    /**
+     * 退出登录
+     */
+    @RequestMapping("loginOut")
+    public String loginOut(HttpSession session) {
+        session.invalidate();
+        return "/index.html";
+    }
+
 
     /**
      * 新增员工

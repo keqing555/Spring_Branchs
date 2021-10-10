@@ -12,14 +12,14 @@
 <body>
 <div align="center">
 <div style="margin:20px 0;"></div>
-<div class="easyui-layout" style="width:1200px;height:550px;">
+<div class="easyui-layout" style="width:80%;height:50%;">
     <div data-options="region:'north'" style="height:50px">
         <h2 align="center">后台管理系统</h2>
     </div>
     <div data-options="region:'south',split:true" style="height:60px;"></div>
-    <div data-options="region:'east',split:true" title="当前用户" style="width:100px;">
-        <p id="username"></p>
-        <a href="/employee/loginOut">退出</a>
+    <div data-options="region:'east',split:true" title="当前用户" style="text-align:center;width:100px;">
+        <p id="username" style="color:rebeccapurple;font-size: x-large"></p>
+        <a href="/employee/loginOut"><button>退出</button></a>
     </div>
     <div data-options="region:'west',split:true" title="功能菜单" style="width:125px;">
         <ul id="tt"></ul>

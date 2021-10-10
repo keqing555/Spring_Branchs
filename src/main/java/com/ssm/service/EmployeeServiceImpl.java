@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             EmployeeExample.Criteria criteria = example.createCriteria();
             criteria.andJobnumberEqualTo(jobnumber);
             criteria.andPasswordEqualTo(password);
+            Employee employee = employeeMapper.selectByPrimaryKey(74l);
+
             List<Employee> employees = employeeMapper.selectByExample(example);
             if (employees != null && employees.size() > 0) {
                 result.setLoginSuccess(true);
