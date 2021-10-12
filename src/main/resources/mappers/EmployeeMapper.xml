@@ -134,7 +134,10 @@
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.ssm.bean.Employee">
+        <!--
+        新增返回主键
+    -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="eid" parameterType="com.ssm.bean.Employee">
         insert into employee (eid, ename, esex,
                               eage, etelephone, hiredate,
                               jobnumber, password, remark,
